@@ -8,7 +8,7 @@ export default ({ setStep, step }) => {
   const [hasFailed, setHasFailed] = useState(false)
 
   const handleSubmit = () => {
-    const valid = [businessAge, businessType, setBusinessSize].every(v => v)
+    const valid = [businessAge, businessType, businessSize].every(v => v)
 
     if (valid) {
       setStep(2)
@@ -28,7 +28,7 @@ export default ({ setStep, step }) => {
   }
 
   return (
-    <Form onSubmit={handleSubmit} className="ui segment left aligned">
+    <Form className="ui segment left aligned">
       <Header as="h1">Eligibility</Header>
 
       {message()}
@@ -56,7 +56,7 @@ export default ({ setStep, step }) => {
       <Divider />
 
       <div className="button-group">
-        <Button secondary type='submit'>Submit</Button>
+        <Button secondary onClick={handleSubmit}>Submit</Button>
         <Button disabled>Back</Button>
       </div>
     </Form>

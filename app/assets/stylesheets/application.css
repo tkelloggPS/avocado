@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+
+label {
+  font-size: 16px !important;
+}
+
+body {
+  margin-top: 25px;
+}
+
+.segment {
+  padding: 50px !important;
+}
+
+.fields {
+  padding: 10px;
+  padding-left: 0px;
+}
+
+.button-group {
+  text-align: left;
+}

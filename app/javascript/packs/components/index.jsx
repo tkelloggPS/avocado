@@ -27,7 +27,7 @@ export default () => {
         <Step active={step === 1} completed={step > 1}>
           <Step.Content>
             <Step.Title>Verify</Step.Title>
-            <Step.Description>Determine if your business if eligible</Step.Description>
+            <Step.Description>Determine if your business is eligible</Step.Description>
           </Step.Content>
         </Step>
 
@@ -47,7 +47,6 @@ export default () => {
       </Step.Group>
 
       {activeStep()}
-      {/* <Button disabled={step === 1} onClick={() => setStep(step - 1)}>Back</Button> */}
     </Container>
   )
 }

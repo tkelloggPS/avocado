@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { Form, Button, Message, Header, Divider } from "semantic-ui-react"
 
 export default ({ setStep, step }) => {
-  const [businessAge, setBusinessAge] = useState(false)
-  const [businessSize, setBusinessSize] = useState(false)
-  const [businessType, setBusinessType] = useState(false)
+  const [businessAge, setBusinessAge] = useState(true)
+  const [businessSize, setBusinessSize] = useState(true)
+  const [businessType, setBusinessType] = useState(true)
   const [hasFailed, setHasFailed] = useState(false)
 
   const handleSubmit = () => {
@@ -28,7 +28,7 @@ export default ({ setStep, step }) => {
   }
 
   return (
-    <Form onSubmit={handleSubmit} className="ui segment">
+    <Form onSubmit={handleSubmit} className="ui segment left aligned">
       <Header as="h1">Eligibility</Header>
 
       {message()}

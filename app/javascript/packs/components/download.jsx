@@ -1,5 +1,5 @@
 import React from "react"
 
 export default () => (
-  <div>Detail</div>
+  <div>Download</div>
 )

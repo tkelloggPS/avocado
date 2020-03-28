@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import { Container, Step, Button } from 'semantic-ui-react'
+import { Container, Step } from 'semantic-ui-react'
 
-import EligibilityForm from "./eligibility_form"
+import Verification from "./verification"
 import Provider from "./provider"
+import Download from "./download"
 
 export default () => {
   const [step, setStep] = useState(1)
@@ -10,15 +11,13 @@ export default () => {
   const activeStep = () => {
     switch (step) {
       case 1:
-        return <EligibilityForm setStep={setStep} />
-        break;
+        return <Verification setStep={setStep} step={step} />
       case 2:
-        return <Provider setStep={setStep} />
+        return <Provider setStep={setStep} step={step} />
       case 3:
-        return <Download setStep={setStep} />
+        return <Download setStep={setStep} step={step} />
       default:
-        return <EligibilityForm setStep = { setStep } />
-        break;
+        return <Verification setStep={setStep} step={step} />
     }
   }
 
@@ -48,8 +47,7 @@ export default () => {
       </Step.Group>
 
       {activeStep()}
-
-      <Button disabled={step === 1} click={() => setStep(step - 1)}>Back</Button>
+      {/* <Button disabled={step === 1} onClick={() => setStep(step - 1)}>Back</Button> */}
     </Container>
   )
 }

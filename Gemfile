@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 
+gem 'webpacker', '~> 4.x'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'

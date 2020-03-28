@@ -33,7 +33,7 @@ export default () => {
 
         <Step active={step === 2} completed={step > 2}>
           <Step.Content>
-            <Step.Title>Process</Step.Title>
+            <Step.Title>Select a provider</Step.Title>
             <Step.Description>Upload accounting details</Step.Description>
           </Step.Content>
         </Step>

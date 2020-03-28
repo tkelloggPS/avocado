@@ -1,11 +1,39 @@
-import React from "react"
-import { Segment, Header, Button, Divider, List } from "semantic-ui-react"
+import React, { useState } from "react"
+import {
+  Segment,
+  Header,
+  Button,
+  Divider,
+  List,
+  Message
+} from "semantic-ui-react"
 
 export default ({ setStep, step }) => {
+  const [provider, setProvider] = useState("")
+  const [hasFailed, setHasFailed] = useState(false)
+
+  const handleSubmit = () => {
+    const valid = provider !== ""
+
+    if (valid) {
+      // trigger backend oauth call
+      alert(`Sending call ${provider}`)
+    } else {
+      setHasFailed(true)
+    }
+  }
+
+  const message = () => {
+    if (!hasFailed) return
+
+    return <Message><p>You must select a provider</p></Message>
+  }
 
   return (
     <Segment className="left aligned">
       <Header as="h1">Select a Provider</Header>
+
+      {message()}
 
       <Header as="h3">Details</Header>
 
@@ -35,10 +63,17 @@ export default ({ setStep, step }) => {
         </List.Item>
       </List>
 
+      <Header as="h3">Select a provider</Header>
+
+      <div>
+        <Button active={provider === "qb"} onClick={() => setProvider("qb")}>QuickBooks</Button>
+        <Button active={provider === "fb"} onClick={() => setProvider("fb")}>FreshBooks</Button>
+      </div>
 
       <Divider />
 
       <div className="button-group">
+        <Button secondary onClick={handleSubmit}>Submit</Button>
         <Button onClick={() => setStep(step - 1)}>Back</Button>
       </div>
     </Segment>

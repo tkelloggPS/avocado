@@ -23,6 +23,7 @@ export default ({ setStep, step }) => {
     return (
       <Message>
         <p>Every condition must be true to be eligible</p>
+        {/* should also include a link to other things that could be eligible */}
       </Message>
     )
   }

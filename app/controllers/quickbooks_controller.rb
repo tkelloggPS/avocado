@@ -1,15 +1,30 @@
 class QuickbooksController < ApplicationController
   def show
-    render json: retrieved_quickbooks_data
-  rescue RestClient::Unauthorized
-    # handle expired token
-    redirect_to "/auth/quickbooks_oauth2"
-  rescue
-    # something went horribly, horribly wrong
-    render json: mock_quickbooks_data
+    @data = retrieved_quickbooks_data rescue mock_quickbooks_data
+
+    file = ERB.new(File.read(download_path)).result(binding)
+    pdf = WickedPdf.new.pdf_from_string(file)
+
+    send_data pdf.force_encoding('BINARY'), pdf_options
+
+  #   render json: retrieved_quickbooks_data
+  # rescue RestClient::Unauthorized
+  #   # handle expired token
+  #   redirect_to "/auth/quickbooks_oauth2"
+  # rescue
+  #   # something went horribly, horribly wrong
+  #   render json: mock_quickbooks_data
   end
 
   private
+
+  def download_path
+    Rails.root.join "app", "views", "quickbooks", "download.html.erb"
+  end
+
+  def pdf_options
+    { filename: "application.pdf", type: "application/pdf", disposition: "attachment" }
+  end
 
   def quickbooks_client
     @quickbooks_client ||= Clients::Quickbooks.new(

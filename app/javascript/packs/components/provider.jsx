@@ -3,38 +3,20 @@ import {
   Segment,
   Header,
   Button,
-  Divider,
-  List,
-  Message
+  List
 } from "semantic-ui-react"
 
-export default ({ setStep, step }) => {
+export default () => {
   const [provider, setProvider] = useState("")
-  const [hasFailed, setHasFailed] = useState(false)
 
-  const handleSubmit = async () => {
-    const valid = provider !== ""
-
-    if (valid) {
-      window.location.href = `/auth/${provider}/`
-    } else {
-      setHasFailed(true)
-    }
-  }
-
-  const message = () => {
-    if (!hasFailed) return
-
-    return <Message><p>You must choose a provider</p></Message>
+  const handleSubmitQb = async () => {
+    window.location.href = '/auth/quickbooks_oauth2/'
   }
 
   return (
     <Segment className="left aligned">
-      <Header as="h1">Choose</Header>
 
-      {message()}
-
-      <Header as="h3">Details</Header>
+      <Header as="h3">Loan Details</Header>
 
       <List>
         <List.Item>
@@ -62,19 +44,7 @@ export default ({ setStep, step }) => {
         </List.Item>
       </List>
 
-      <Header as="h3">Select a provider</Header>
-
-      <div>
-        <Button active={provider === "quickbooks_oauth2"} onClick={() => setProvider("quickbooks_oauth2")}>QuickBooks</Button>
-        <Button disabled onClick={() => setProvider("fb")}>FreshBooks</Button>
-      </div>
-
-      <Divider />
-
-      <div className="button-group">
-        <Button secondary onClick={handleSubmit}>Submit</Button>
-        <Button onClick={() => setStep(step - 1)}>Back</Button>
-      </div>
+      <Button onClick={handleSubmitQb}>QuickBooks</Button>
     </Segment>
   )
 }

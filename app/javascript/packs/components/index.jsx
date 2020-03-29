@@ -31,7 +31,7 @@ export default () => {
 
       <Statistic>
         <Statistic.Value className="green item">$3,500,000,000</Statistic.Value>
-        <Statistic.Label>Available Funds to Small Businesses</Statistic.Label>
+        <Statistic.Label>Funds Available to Suport Small Businesses</Statistic.Label>
       </Statistic>
 
       <Step.Group ordered>
@@ -44,8 +44,8 @@ export default () => {
 
         <Step active={step === 2} completed={step > 2}>
           <Step.Content>
-            <Step.Title>Choose</Step.Title>
-            <Step.Description>Choose your accounting provider</Step.Description>
+            <Step.Title>Connect</Step.Title>
+            <Step.Description>Connect with your Quickbooks account</Step.Description>
           </Step.Content>
         </Step>
 

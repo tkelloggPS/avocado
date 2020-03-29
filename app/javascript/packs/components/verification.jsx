@@ -94,8 +94,7 @@ export default ({ setStep, _ }) => {
       <Divider />
 
       <div className="button-group">
-        <Button secondary onClick={handleSubmit}>Submit</Button>
-        <Button disabled>Back</Button>
+        <Button secondary onClick={handleSubmit}>Verify</Button>
       </div>
     </Form>
   )

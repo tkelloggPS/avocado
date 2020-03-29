@@ -1,24 +1,3 @@
-# README
+# Project Avocado
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This application is our proof of concept for a way to accelerate small business owners's applications to financial relief from Coronavirus Aid, Relief, and Economic Security Act. Our team found that borrowers and small business owners have a real pain point in accessing these loans because it requires significant paperwork. Our team chose to focus on improving the access to that capital by allowing business owners who have Intuit QuickBooks accounts a way to generate loan applications automatically.We see this project as a first step towards reducing the economic hardships faced by small business after Covid-19. We welcome any pull requests that you may have towards improving this project.

@@ -17,21 +17,22 @@ export default ({ setStep, _ }) => {
     }
   }
 
-  const message = () => {
-    if (!hasFailed) return
-
+  const doesNotQualify = () => {
     return (
       <Message>
-        <List>
-          <List.Item>Tax credits for sick leave up to $5K</List.Item>
-          <List.Item>Penalty-free 401 withdrawals up to $100K with repayment in next 3 yrs</List.Item>
-          <List.Item>Pax taxes late (deadline moved from April 15 to July 15)</List.Item>
-        </List>
+        <Message.Header as='h1'>Unfortunately, you do not qualify for a loan under the terms of the act</Message.Header>
+        <Message.Header as='h4'>Please explore additional options that are available to you:</Message.Header>
+        <Message.List>
+          <Message.Item>Tax credits for sick leave up to $5K</Message.Item>
+          <Message.Item>Penalty-free 401 withdrawals up to $100K with repayment in next 3 yrs</Message.Item>
+          <Message.Item>Pax taxes late (deadline moved from April 15 to July 15)</Message.Item>
+        </Message.List>
       </Message>
     )
   }
 
-  const options = [
+  const verification = () => {
+    const options = [
       {
         text: 'Yes',
         value: true
@@ -40,14 +41,11 @@ export default ({ setStep, _ }) => {
         text: 'No',
         value: false
       },
-  ]
+    ]
 
-  return (
-    <Form className="ui segment left aligned">
-      <Header as="h1">Eligibility</Header>
-
-      {message()}
-
+    return(
+      <Form className="ui segment left aligned">
+      <Header as="h1">Verify Eligibility</Header>
       <Grid divided='vertically'>
         <Grid.Row columns={2}>
           <Grid.Column>
@@ -97,5 +95,8 @@ export default ({ setStep, _ }) => {
         <Button secondary onClick={handleSubmit}>Verify</Button>
       </div>
     </Form>
-  )
+   )
+  }
+
+  return hasFailed ? doesNotQualify() : verification()
 }

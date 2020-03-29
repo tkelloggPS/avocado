@@ -2,14 +2,21 @@
 
 class SessionsController < ApplicationController
   def create
-    @current_user = User.find_or_create_by_auth(auth_data)
+    user = User.find_or_new_by_auth(auth_data)
+    session[:current_user_id] = user.id
+    user.token = auth_data.token
+    user.save!
 
-    redirect_to root_path
+    redirect_to app_path
   end
 
   protected
 
   def auth_data
-    Serializers::Oauth::Quickbook.new(request.env['omniauth.auth'])
+    Serializers::Oauth::Quickbook.new(
+      request.env['omniauth.auth'].merge(
+        realm_id: params[:realmId]
+      )
+    )
   end
 end

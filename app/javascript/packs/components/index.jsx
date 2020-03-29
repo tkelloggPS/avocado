@@ -6,8 +6,10 @@ import Provider from "./provider"
 import Download from "./download"
 import Success from "./success"
 
+const initialStep = gon.step || 1
+
 export default () => {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(initialStep)
 
   const activeStep = () => {
     switch (step) {

@@ -41,6 +41,11 @@ body {
   width: 100%;
 }
 
+.tray {
+  display: flex;
+  margin: 25px !important;
+}
+
 .ui.statistic {
   padding: 25px;
   margin: 0;

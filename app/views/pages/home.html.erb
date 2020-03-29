@@ -1,3 +1,7 @@
+<div class="tray">
+  <%= button_to "Sign Out", sign_out_path, method: :delete, form: { style: 'display:flex; margin-left:auto;'}, class: "ui primary button" %>
+</div>
+
 <div class="ui container menu">
   <%= link_to "Home", "https://vocado.launchaco.com/", class: "ui item active" %>
   <%= link_to "Demo", app_path, class: "ui item" %>

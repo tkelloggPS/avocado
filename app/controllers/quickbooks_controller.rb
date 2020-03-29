@@ -1,19 +1,6 @@
 class QuickbooksController < ApplicationController
   def show
-    @data = retrieved_quickbooks_data rescue mock_quickbooks_data
-
-    file = ERB.new(File.read(download_path)).result(binding)
-    pdf = WickedPdf.new.pdf_from_string(file)
-
-    send_data pdf.force_encoding('BINARY'), pdf_options
-
-  #   render json: retrieved_quickbooks_data
-  # rescue RestClient::Unauthorized
-  #   # handle expired token
-  #   redirect_to "/auth/quickbooks_oauth2"
-  # rescue
-  #   # something went horribly, horribly wrong
-  #   render json: mock_quickbooks_data
+    send_file("app/assets/public/SBA Business Loan Application.pdf", type: "application/pdf")
   end
 
   private

@@ -12,13 +12,11 @@ export default ({ setStep, step }) => {
   const [provider, setProvider] = useState("")
   const [hasFailed, setHasFailed] = useState(false)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const valid = provider !== ""
 
     if (valid) {
-      // trigger backend oauth call
-      // alert(`Sending call ${provider}`)
-      setStep(3)
+      window.location.href = `/auth/${provider}/`
     } else {
       setHasFailed(true)
     }
@@ -67,7 +65,7 @@ export default ({ setStep, step }) => {
       <Header as="h3">Select a provider</Header>
 
       <div>
-        <Button active={provider === "qb"} onClick={() => setProvider("qb")}>QuickBooks</Button>
+        <Button active={provider === "quickbooks_oauth2"} onClick={() => setProvider("quickbooks_oauth2")}>QuickBooks</Button>
         <Button disabled onClick={() => setProvider("fb")}>FreshBooks</Button>
       </div>
 

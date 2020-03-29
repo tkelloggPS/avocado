@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user.token = auth_data.token
     user.save!
 
-    redirect_to quickbooks_path
+    redirect_to app_path
   end
 
   protected

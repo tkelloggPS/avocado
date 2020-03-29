@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Form, Button, Message, Header, Divider } from "semantic-ui-react"
+import { Form, Button, Message, Header, Divider, List } from "semantic-ui-react"
 
 export default ({ setStep, step }) => {
   const [businessAge, setBusinessAge] = useState(true)
@@ -22,8 +22,11 @@ export default ({ setStep, step }) => {
 
     return (
       <Message>
-        <p>Every condition must be true to be eligible</p>
-        {/* should also include a link to other things that could be eligible */}
+        <List>
+          <List.Item>Tax credits for sick leave up to $5K</List.Item>
+          <List.Item>Penalty-free 401 withdrawals up to $100K with repayment in next 3 yrs</List.Item>
+          <List.Item>Pax taxes late (deadline moved from April 15 to July 15)</List.Item>
+        </List>
       </Message>
     )
   }

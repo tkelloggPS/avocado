@@ -28,10 +28,24 @@ body {
 }
 
 .fields {
-  padding: 10px;
+  padding: 5px;
   padding-left: 0px;
+  margin: 0;
 }
 
 .button-group {
   text-align: left;
+}
+
+.steps {
+  width: 100%;
+}
+
+.ui.statistic {
+  padding: 25px;
+  margin: 0;
+}
+
+p {
+  font-size: 16px;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Container, Step } from 'semantic-ui-react'
+import { Container, Step, Statistic } from 'semantic-ui-react'
 
 import Verification from "./verification"
 import Provider from "./provider"
@@ -23,6 +23,12 @@ export default () => {
 
   return (
     <Container className="ui center aligned padded">
+
+      <Statistic>
+        <Statistic.Value className="green item">$3,500,000,000</Statistic.Value>
+        <Statistic.Label>Available Funds to Small Businesses</Statistic.Label>
+      </Statistic>
+
       <Step.Group ordered>
         <Step active={step === 1} completed={step > 1}>
           <Step.Content>

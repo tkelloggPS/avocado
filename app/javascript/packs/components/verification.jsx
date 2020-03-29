@@ -1,14 +1,14 @@
 import React, { useState } from "react"
-import { Form, Button, Message, Header, Divider, List } from "semantic-ui-react"
+import { Form, Button, Message, Header, Divider, List, Grid } from "semantic-ui-react"
 
-export default ({ setStep, step }) => {
-  const [businessAge, setBusinessAge] = useState(true)
-  const [businessSize, setBusinessSize] = useState(true)
-  const [businessType, setBusinessType] = useState(true)
+export default ({ setStep, _ }) => {
+  const [businessAge, setBusinessAge] = useState(false)
+  const [businessSize, setBusinessSize] = useState(false)
+  const [businessType, setBusinessType] = useState(false)
   const [hasFailed, setHasFailed] = useState(false)
 
   const handleSubmit = () => {
-    const valid = [businessAge, businessType, businessSize].every(v => v)
+    const valid = businessAge && businessType && businessSize
 
     if (valid) {
       setStep(2)
@@ -31,32 +31,66 @@ export default ({ setStep, step }) => {
     )
   }
 
+  const options = [
+      {
+        text: 'Yes',
+        value: true
+      },
+      {
+        text: 'No',
+        value: false
+      },
+  ]
+
   return (
     <Form className="ui segment left aligned">
       <Header as="h1">Eligibility</Header>
 
       {message()}
 
-      <div className="ui center aligned padded">
-        <Form.Group inline>
-          <label>Has your business been around for more than 1 year?</label>
-          <Form.Radio label="True" checked={businessAge === true} onClick={() => setBusinessAge(true)} />
-          <Form.Radio label="False" checked={businessAge === false} onClick={() => setBusinessAge(false)} />
-        </Form.Group>
+      <Grid divided='vertically'>
+        <Grid.Row columns={2}>
+          <Grid.Column>
+            Has your business been around for more than 1 year?
+          </Grid.Column>
+          <Grid.Column width={2}>
+            <Form.Dropdown
+              selection
+              fluid
+              options={options}
+              onChange={ (_, data) => setBusinessAge(data.value) }
+            />
+          </Grid.Column>
+        </Grid.Row>
 
-        <Form.Group inline>
-          <label>Does your business have less than 500 employees?</label>
-          <Form.Radio label="True" checked={businessSize === true} onClick={() => setBusinessSize(true)} />
-          <Form.Radio label="False" checked={businessSize === false} onClick={() => setBusinessSize(false)} />
-        </Form.Group>
+        <Grid.Row columns={2}>
+          <Grid.Column>
+            Does your business have less than 500 employees?
+          </Grid.Column>
+          <Grid.Column width={2}>
+            <Form.Dropdown
+              selection
+              fluid
+              options={options}
+              onChange={ (_, data) => setBusinessSize(data.value) }
+            />
+          </Grid.Column>
+        </Grid.Row>
 
-        <Form.Group inline>
-          <label>Does your business exclude marijuana, gambling or adult entertainment?</label>
-          <Form.Radio label="True" checked={businessType === true} onClick={() => setBusinessType(true)} />
-          <Form.Radio label="False" checked={businessType === false} onClick={() => setBusinessType(false)} />
-        </Form.Group>
-      </div>
-
+        <Grid.Row columns={2}>
+          <Grid.Column>
+            Does your business exclude marijuana, gambling or adult entertainment?
+          </Grid.Column>
+          <Grid.Column width={2}>
+            <Form.Dropdown
+              selection
+              fluid
+              options={options}
+              onChange={ (_, data) => setBusinessType(data.value) }
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
       <Divider />
 
       <div className="button-group">

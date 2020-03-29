@@ -25,6 +25,10 @@ module Serializers
         info[:email]
       end
 
+      def realm_id
+        auth_hash[:realm_id]
+      end
+
       def to_h
         {
           uid: uid,
@@ -32,6 +36,7 @@ module Serializers
           provider: provider,
           name: name,
           email: email,
+          realm_id: realm_id,
         }
       end
 

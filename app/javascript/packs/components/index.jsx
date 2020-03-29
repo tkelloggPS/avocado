@@ -4,6 +4,7 @@ import { Container, Step, Statistic } from 'semantic-ui-react'
 import Verification from "./verification"
 import Provider from "./provider"
 import Download from "./download"
+import Success from "./success"
 
 export default () => {
   const [step, setStep] = useState(1)
@@ -16,6 +17,8 @@ export default () => {
         return <Provider setStep={setStep} step={step} />
       case 3:
         return <Download setStep={setStep} step={step} />
+      case 4:
+        return <Success setStep={setStep} step={step} />
       default:
         return <Verification setStep={setStep} step={step} />
     }
@@ -39,8 +42,8 @@ export default () => {
 
         <Step active={step === 2} completed={step > 2}>
           <Step.Content>
-            <Step.Title>Select a provider</Step.Title>
-            <Step.Description>Upload accounting details</Step.Description>
+            <Step.Title>Choose</Step.Title>
+            <Step.Description>Choose your accounting provider</Step.Description>
           </Step.Content>
         </Step>
 

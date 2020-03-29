@@ -17,7 +17,8 @@ export default ({ setStep, step }) => {
 
     if (valid) {
       // trigger backend oauth call
-      alert(`Sending call ${provider}`)
+      // alert(`Sending call ${provider}`)
+      setStep(3)
     } else {
       setHasFailed(true)
     }
@@ -26,12 +27,12 @@ export default ({ setStep, step }) => {
   const message = () => {
     if (!hasFailed) return
 
-    return <Message><p>You must select a provider</p></Message>
+    return <Message><p>You must choose a provider</p></Message>
   }
 
   return (
     <Segment className="left aligned">
-      <Header as="h1">Select a Provider</Header>
+      <Header as="h1">Choose</Header>
 
       {message()}
 
@@ -67,7 +68,7 @@ export default ({ setStep, step }) => {
 
       <div>
         <Button active={provider === "qb"} onClick={() => setProvider("qb")}>QuickBooks</Button>
-        <Button active={provider === "fb"} onClick={() => setProvider("fb")}>FreshBooks</Button>
+        <Button disabled onClick={() => setProvider("fb")}>FreshBooks</Button>
       </div>
 
       <Divider />

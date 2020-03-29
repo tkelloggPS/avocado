@@ -3,9 +3,5 @@
       <%= button_to "Sign Out", sign_out_path, method: :delete, form: { style: 'display:flex; margin-left:auto;'}, class: "ui primary button" %>
   </div>
 <% end %>
-<div class="ui container menu">
-  <%= link_to "Home", "https://vocado.launchaco.com/", class: "ui item" %>
-  <%= link_to "Demo", root_path, class: "ui item active" %>
-</div>
 
 <%= javascript_pack_tag 'app' %>

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   get "/app", to: "pages#app"
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/mock', to: 'application#mock'
 end
